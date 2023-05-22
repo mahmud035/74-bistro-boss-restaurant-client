@@ -8,10 +8,16 @@ import slide2 from '../../assets/home/slide2.jpg';
 import slide3 from '../../assets/home/slide3.jpg';
 import slide4 from '../../assets/home/slide4.jpg';
 import slide5 from '../../assets/home/slide5.jpg';
+import SectionTitle from '../../shared/SectionTitle';
 
 const Category = () => {
   return (
-    <div className="pt-20">
+    <section className="pt-20">
+      <SectionTitle
+        heading="Order online"
+        subHeading="From 11:00am to 10:00pm"
+      />
+
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -30,17 +36,18 @@ const Category = () => {
           </h3>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide2} className="w-full" alt="" />
-          <h3 className="-mt-20 text-center text-4xl uppercase text-white">
-            Pizza
-          </h3>
-        </SwiperSlide>
-        <SwiperSlide>
           <img src={slide3} className="w-full" alt="" />
           <h3 className="-mt-20 text-center text-4xl uppercase text-white">
             Soups
           </h3>
         </SwiperSlide>
+        <SwiperSlide>
+          <img src={slide2} className="w-full" alt="" />
+          <h3 className="-mt-20 text-center text-4xl uppercase text-white">
+            Pizza
+          </h3>
+        </SwiperSlide>
+
         <SwiperSlide>
           <img src={slide4} className="w-full" alt="" />
           <h3 className="-mt-20 text-center text-4xl uppercase text-white">
@@ -54,7 +61,7 @@ const Category = () => {
           </h3>
         </SwiperSlide>
       </Swiper>
-    </div>
+    </section>
   );
 };
 
