@@ -1,4 +1,4 @@
-// import logo from '../assets/icon/logo-2.png';
+import logo from '../assets/icon/logo-2.png';
 
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar fixed z-10 max-w-screen-xl bg-black bg-opacity-20  py-4 text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn-ghost btn lg:hidden">
@@ -46,12 +46,14 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+              className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-black bg-opacity-70 p-2 font-bold shadow"
             >
               {navOptions}
             </ul>
           </div>
-          <a className="btn-ghost btn text-xl normal-case">Bistro Boss</a>
+          <a className="btn-ghost btn text-xl normal-case">
+            <img src={logo} alt="" />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
