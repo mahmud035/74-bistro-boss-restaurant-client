@@ -1,6 +1,9 @@
 .featured-item {
   background: url('../../src/assets/home/featured.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   height: fit-content;
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: overlay;
+  overflow-y: scroll;
 }
