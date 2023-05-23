@@ -21,7 +21,7 @@ const Featured = () => {
             quasi ad?Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Temporibus, distinctio.
           </p>
-          <button className="btn-outline btn mt-6 w-[160px] text-white">
+          <button className="btn-outline btn mt-6 w-[160px]  border-0 border-b-4 text-white">
             Order Now
           </button>
         </div>
