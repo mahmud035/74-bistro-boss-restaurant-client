@@ -51,9 +51,9 @@ const Navbar = () => {
               {navOptions}
             </ul>
           </div>
-          <a className="btn-ghost btn text-xl normal-case">
+          <Link to="/" className="btn-ghost btn text-xl normal-case">
             <img src={logo} alt="" />
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
