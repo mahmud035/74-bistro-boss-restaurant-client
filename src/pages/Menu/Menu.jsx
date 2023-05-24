@@ -18,13 +18,12 @@ const Menu = () => {
   const salad = menu.filter((item) => item.category === 'salaz');
   const soup = menu.filter((item) => item.category === 'soup');
 
-  console.log(dessert);
+  // console.log(dessert);
 
   return (
     <div>
       <Helmet>
         <title>Bistro Boss | Menu</title>
-        <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
 
       {/* IMP: Main Menu Cover Image and Content */}
