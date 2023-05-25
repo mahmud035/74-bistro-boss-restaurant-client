@@ -1,16 +1,19 @@
-import { Helmet } from 'react-helmet-async';
-import Cover from '../../shared/Cover';
-import orderBg from '../../assets/shop/banner2.jpg';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useEffect, useState } from 'react';
-import useMenu from '../../hooks/useMenu';
-import OrderTab from './OrderTab';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import orderBg from '../../assets/shop/banner2.jpg';
+import useMenu from '../../hooks/useMenu';
+import Cover from '../../shared/Cover';
+import OrderTab from './OrderTab';
 
 const Order = () => {
-  const [tabIndex, setTabIndex] = useState(0);
-  const { menu } = useMenu();
+  const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
   const { category } = useParams();
+  const initialIndex = categories.indexOf(category);
+
+  const [tabIndex, setTabIndex] = useState(initialIndex);
+  const { menu } = useMenu();
 
   const salad = menu.filter((item) => item.category === 'salad');
   const pizza = menu.filter((item) => item.category === 'pizza');
@@ -27,35 +30,29 @@ const Order = () => {
   return (
     <div>
       <Helmet>
-        <title>Bistro Boss | Order</title>
+        <title>Bistro Boss | Order Food</title>
       </Helmet>
 
-      {/* IMP: Order Page Cover Image and Content */}
-      <Cover img={orderBg} title="Order Food" />
+      <Cover img={orderBg} title="Order Food"></Cover>
 
-      {/* TAB  */}
-      <Tabs
-        defaultIndex={tabIndex}
-        onSelect={(index) => setTabIndex(index)}
-        className="px-5 xl:px-0"
-      >
-        <TabList>
-          <div className="mt-10 flex justify-center border-0 border-y-4 font-semibold">
-            <Tab>Salad</Tab>
-            <Tab>Pizza</Tab>
-            <Tab>Soup</Tab>
-            <Tab>Dessert</Tab>
-            <Tab>Drink</Tab>
-          </div>
+      <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+        <TabList className="mt-10 flex justify-center   border-0 border-y-4 font-semibold">
+          <Tab>Salad</Tab>
+          <Tab>Pizza</Tab>
+          <Tab>Soup</Tab>
+          <Tab>Dessert</Tab>
+          <Tab>Drinks</Tab>
         </TabList>
+
         <TabPanel>
           <OrderTab items={salad} />
         </TabPanel>
         <TabPanel>
           <OrderTab items={pizza} />
         </TabPanel>
-        <TabPanel></TabPanel>
-        <OrderTab items={soup} />
+        <TabPanel>
+          <OrderTab items={soup} />
+        </TabPanel>
         <TabPanel>
           <OrderTab items={dessert} />
         </TabPanel>
