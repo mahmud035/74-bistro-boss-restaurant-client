@@ -1,8 +1,19 @@
+import { useContext } from 'react';
 import logo from '../assets/icon/logo-2.png';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/UserContext';
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout().then(() => {
+      navigate('/login');
+    });
+  };
+
   const navOptions = (
     <>
       <li>
@@ -13,9 +24,6 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/order/salad">Order Food</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
       </li>
       <li>
         <Link>Dashboard</Link>
@@ -62,7 +70,19 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          {user ? (
+            <>
+              <button onClick={handleLogout} className="btn capitalize">
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="btn capitalize">
+                <Link to="/login">Login</Link>
+              </button>
+            </>
+          )}
         </div>
       </div>
     </>

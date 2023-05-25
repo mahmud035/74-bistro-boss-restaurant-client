@@ -1,14 +1,22 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   LoadCanvasTemplate,
   loadCaptchaEnginge,
   validateCaptcha,
 } from 'react-simple-captcha';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../contexts/UserContext';
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+
+  const from = location?.state?.from?.pathname || '/';
+
   const {
     register,
     handleSubmit,
@@ -43,6 +51,24 @@ const Login = () => {
 
       return;
     }
+
+    //* 2. sign in
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          icon: 'success',
+          title: `Logged in successfully`,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: 'error',
+          title: `${error.message}`,
+        });
+      });
   };
 
   return (
@@ -57,7 +83,7 @@ const Login = () => {
               <div className="card-body">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-bold">Email</span>
+                    <span className="label-text font-bold">Email*</span>
                   </label>
                   <input
                     {...register('email', {
@@ -83,7 +109,7 @@ const Login = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-bold">Password</span>
+                    <span className="label-text font-bold">Password*</span>
                   </label>
                   <input
                     {...register('password', {
