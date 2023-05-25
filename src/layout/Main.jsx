@@ -1,13 +1,21 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../shared/Footer';
 import Navbar from '../shared/Navbar';
 
 const Main = () => {
+  const location = useLocation();
+  // console.log(location.pathname);
+
+  const isLoginPage = location.pathname === '/login';
+  const isRegisterPage = location.pathname === '/register';
+
+  const shouldShowNavbarAndFooter = !isLoginPage && !isRegisterPage;
+
   return (
     <div>
-      <Navbar />
+      {shouldShowNavbarAndFooter && <Navbar />}
       <Outlet />
-      <Footer />
+      {shouldShowNavbarAndFooter && <Footer />}
     </div>
   );
 };
