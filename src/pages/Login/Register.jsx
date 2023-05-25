@@ -83,7 +83,7 @@ const Register = () => {
 
                   {errors?.password && (
                     <span className="mb-3 text-red-500">
-                      {errors?.password?.message}
+                      {errors?.name?.message}
                     </span>
                   )}
                 </div>
@@ -121,7 +121,11 @@ const Register = () => {
                     {...register('password', {
                       required: {
                         value: true,
-                        message: 'Invalid password',
+                        message: 'Password is required',
+                      },
+                      minLength: {
+                        value: 6,
+                        message: 'Password should be at least 6 characters',
                       },
                     })}
                     type="password"
