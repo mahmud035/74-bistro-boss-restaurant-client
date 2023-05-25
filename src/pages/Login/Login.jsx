@@ -8,6 +8,7 @@ import {
 } from 'react-simple-captcha';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../contexts/UserContext';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -73,6 +74,9 @@ const Login = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Bistro Boss | Login</title>
+      </Helmet>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col justify-center lg:flex">
           <div className="text-center lg:text-left">

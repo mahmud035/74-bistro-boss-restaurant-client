@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../contexts/UserContext';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -57,6 +58,9 @@ const Register = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Bistro Boss | Register</title>
+      </Helmet>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col justify-center lg:flex">
           <div className="text-center lg:text-left">
