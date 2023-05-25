@@ -1,5 +1,12 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import {
+  LoadCanvasTemplate,
+  loadCaptchaEnginge,
+  validateCaptcha,
+} from 'react-simple-captcha';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const {
@@ -10,18 +17,37 @@ const Login = () => {
     defaultValues: {
       email: '',
       password: '',
+      captcha: '',
     },
   });
+
+  // NOTE: load captcha inside useEffect()
+  useEffect(() => {
+    {
+      loadCaptchaEnginge(6, 'white', 'black');
+    }
+  }, []);
 
   const handleLogin = (data) => {
     const email = data.email;
     const password = data.password;
-    console.log(email, password);
+    const captcha = data.captcha;
+    console.log(email, password, captcha);
+
+    if (validateCaptcha(captcha, false) !== true) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Captcha didn't match! Try again.`,
+      });
+
+      return;
+    }
   };
 
   return (
     <>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen ">
         <div className="hero-content flex-col justify-center lg:flex">
           <div className="text-center lg:text-left">
             <h1 className="pb-4 text-5xl font-bold">Login now!</h1>
@@ -31,7 +57,7 @@ const Login = () => {
               <div className="card-body">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Email</span>
+                    <span className="label-text font-bold">Email</span>
                   </label>
                   <input
                     {...register('email', {
@@ -57,7 +83,7 @@ const Login = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Password</span>
+                    <span className="label-text font-bold">Password</span>
                   </label>
                   <input
                     {...register('password', {
@@ -67,8 +93,8 @@ const Login = () => {
                       },
                     })}
                     type="password"
-                    placeholder="password"
-                    className="input-bordered input"
+                    placeholder="Password"
+                    className="input-bordered input "
                   />
                   <label className="label">
                     <a href="#" className="link-hover label-text-alt link">
@@ -82,16 +108,35 @@ const Login = () => {
                     </span>
                   )}
                 </div>
+                <div className="form-control">
+                  <div className="flex rounded-lg border-2">
+                    <LoadCanvasTemplate />
+                  </div>
+                  <input
+                    {...register('captcha', {
+                      required: {
+                        value: true,
+                        message: `Captcha didn't match`,
+                      },
+                    })}
+                    type="text"
+                    placeholder="Type captcha here"
+                    className="input-bordered input mt-3"
+                    required
+                  />
+                </div>
                 <div className="form-control mt-6">
-                  <button className="btn-primary btn">Login</button>
+                  <button className="btn border-0 bg-yellow-600 capitalize">
+                    Login
+                  </button>
                 </div>
               </div>
             </div>
           </form>
-          <p className="text-sm">
-            Already have an account?{' '}
-            <Link to="/register" className=" text-blue-700 underline">
-              Register
+          <p className="text-sm text-yellow-400">
+            New here?{' '}
+            <Link to="/register" className=" font-bold text-yellow-500">
+              Create a New Account
             </Link>
           </p>
         </div>
