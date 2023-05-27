@@ -8,6 +8,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import 'react-tabs/style/react-tabs.css';
 import UserContext from './contexts/UserContext.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 import CartProvider from './contexts/CartProvider.jsx';
 
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
         <UserContext>
           <CartProvider>
             <App />
