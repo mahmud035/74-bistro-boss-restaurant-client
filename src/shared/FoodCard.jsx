@@ -1,6 +1,10 @@
 const FoodCard = ({ item }) => {
   const { name, image, recipe, price } = item;
-  console.log(item);
+  // console.log(item);
+
+  const handleAddToCart = (item) => {
+    console.log(item);
+  };
 
   return (
     <div>
@@ -16,7 +20,10 @@ const FoodCard = ({ item }) => {
 
           <p>{recipe.slice(0, 80)}</p>
           <div className="card-actions mt-5 justify-center">
-            <button className="btn-outline btn border-0 border-b-4 text-yellow-500">
+            <button
+              onClick={() => handleAddToCart(item)}
+              className="btn-outline btn border-0 border-b-4 text-yellow-500"
+            >
               Add To Cart
             </button>
           </div>

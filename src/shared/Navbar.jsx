@@ -3,6 +3,7 @@ import logo from '../assets/icon/logo-2.png';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/UserContext';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -71,11 +72,20 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <>
+            <div className="flex items-center gap-6">
+              <Link to="/">
+                <button className=" relative gap-2">
+                  <AiOutlineShoppingCart size={36} />
+
+                  <div className="badge-secondary badge absolute -right-3 -top-1">
+                    3
+                  </div>
+                </button>
+              </Link>
               <button onClick={handleLogout} className="btn capitalize">
                 Logout
               </button>
-            </>
+            </div>
           ) : (
             <>
               <button className="btn capitalize">
