@@ -4,6 +4,7 @@ import logo from '../assets/icon/logo-2.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/UserContext';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useQuery } from '@tanstack/react-query';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -14,6 +15,26 @@ const Navbar = () => {
       navigate('/login');
     });
   };
+
+  // const url = ``;
+
+  // const {
+  //   isLoading,
+  //   isError,
+  //   data: Cart = [],
+  //   error,
+  // } = useQuery({
+  //   queryKey: ['cart'],
+  //   queryFn: async () => {
+  //     const res = await fetch(url);
+  //     const data = res.json();
+  //     return data;
+  //   },
+  // });
+
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
   const navOptions = (
     <>

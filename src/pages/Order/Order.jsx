@@ -21,7 +21,7 @@ const Order = () => {
   const dessert = menu.filter((item) => item.category === 'dessert');
   const drinks = menu.filter((item) => item.category === 'drinks');
 
-  console.log(drinks);
+  // console.log(drinks);
 
   useEffect(() => {
     window.scrollTo(0, 0);

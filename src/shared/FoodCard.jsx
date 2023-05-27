@@ -10,15 +10,25 @@ const FoodCard = ({ item }) => {
   const location = useLocation();
 
   const handleAddToCart = (item) => {
-    console.log(item);
+    // console.log(item);
+    const { name, image, price, _id } = item;
 
-    if (user) {
+    //* If user is logged-in, then item will be added to cart
+    if (user && user.email) {
+      const cartItem = {
+        menuItemId: _id,
+        name,
+        image,
+        price,
+        email: user.email,
+      };
+
       fetch(`http://localhost:5000/cart`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(item),
+        body: JSON.stringify(cartItem),
       })
         .then((res) => res.json())
         .then((data) => {
