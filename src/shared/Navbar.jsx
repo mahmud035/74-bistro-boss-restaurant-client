@@ -77,7 +77,7 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <div className="flex items-center gap-6">
-              <Link to="/">
+              <Link to="/dashboard/myCart">
                 <button className=" relative gap-2">
                   <AiOutlineShoppingCart size={36} />
 

@@ -5,6 +5,8 @@ import Menu from '../pages/Menu/Menu';
 import Order from '../pages/Order/Order';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Login/Register';
+import DashboardLayout from '../layout/DashboardLayout';
+import MyCart from '../pages/Dashboard/MyCart/MyCart';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login />,  
+        element: <Login />,
       },
       {
         path: '/register',
@@ -34,6 +36,16 @@ const router = createBrowserRouter([
       {
         path: '/order/:category',
         element: <Order />,
+      },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: '/dashboard/myCart',
+        element: <MyCart />,
       },
     ],
   },
