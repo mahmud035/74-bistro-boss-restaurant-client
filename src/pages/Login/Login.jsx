@@ -40,18 +40,18 @@ const Login = () => {
   const handleLogin = (data) => {
     const email = data.email;
     const password = data.password;
-    const captcha = data.captcha;
-    console.log(email, password, captcha);
+    // const captcha = data.captcha;
+    // console.log(email, password, captcha);
 
-    if (validateCaptcha(captcha, false) !== true) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: `Captcha didn't match! Try again.`,
-      });
+    // if (validateCaptcha(captcha, false) !== true) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Oops...',
+    //     text: `Captcha didn't match! Try again.`,
+    //   });
 
-      return;
-    }
+    //   return;
+    // }
 
     //* 2. sign in
     signIn(email, password)
@@ -145,14 +145,13 @@ const Login = () => {
                   <input
                     {...register('captcha', {
                       required: {
-                        value: true,
+                        value: false,
                         message: `Captcha didn't match`,
                       },
                     })}
                     type="text"
                     placeholder="Type captcha here"
                     className="input-bordered input mt-3"
-                    required
                   />
                 </div>
                 <div className="form-control mt-6">

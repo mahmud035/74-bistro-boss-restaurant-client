@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/UserContext';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const FoodCard = ({ item }) => {
   const { user } = useContext(AuthContext);
   const { name, image, recipe, price } = item;
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleAddToCart = (item) => {
     console.log(item);
@@ -50,7 +51,7 @@ const FoodCard = ({ item }) => {
         confirmButtonText: 'Login Now',
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/login');
+          navigate('/login', { state: { from: location } });
         }
       });
     }
