@@ -9,6 +9,7 @@ import 'react-tabs/style/react-tabs.css';
 import UserContext from './contexts/UserContext.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
+import CartProvider from './contexts/CartProvider.jsx';
 
 const queryClient = new QueryClient();
 
@@ -17,8 +18,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <UserContext>
-          <App />
-          <Toaster position="top-center" />
+          <CartProvider>
+            <App />
+            <Toaster position="top-center" />
+          </CartProvider>
         </UserContext>
       </QueryClientProvider>
     </HelmetProvider>

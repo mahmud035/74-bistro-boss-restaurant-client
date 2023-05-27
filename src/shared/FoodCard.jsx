@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import { AuthContext } from '../contexts/UserContext';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { CartContext } from '../contexts/CartProvider';
 
 const FoodCard = ({ item }) => {
   const { user } = useContext(AuthContext);
+  const { refetch } = useContext(CartContext);
   const { name, image, recipe, price } = item;
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,6 +42,8 @@ const FoodCard = ({ item }) => {
               showConfirmButton: false,
               timer: 1500,
             });
+
+            refetch();
           }
         })
         .catch((error) => {
