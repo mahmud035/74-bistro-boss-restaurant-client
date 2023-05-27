@@ -82,7 +82,7 @@ const Navbar = () => {
                   <AiOutlineShoppingCart size={36} />
 
                   <div className="badge-secondary badge absolute -right-3 -top-1">
-                    {cart.length}
+                    {cart?.length || 0}
                   </div>
                 </button>
               </Link>

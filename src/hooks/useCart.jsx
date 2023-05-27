@@ -18,3 +18,8 @@ const useCart = (email) => {
 };
 
 export default useCart;
+
+// NOTE:
+//* : This custom hook is created for understanding purpose only.
+
+//* It's alternative is CartProvider Component.
