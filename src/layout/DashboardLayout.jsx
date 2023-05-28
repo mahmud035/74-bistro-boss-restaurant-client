@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import {
   AiOutlineShoppingCart,
   AiFillWallet,
@@ -11,7 +11,7 @@ import {
 const DashboardLayout = () => {
   return (
     <>
-      <div className="drawer-mobile drawer">
+      <div className="drawer-mobile drawer ">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           <Outlet />
@@ -23,45 +23,45 @@ const DashboardLayout = () => {
             Open drawer
           </label>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side bg-[#D1A054]">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu w-80 bg-base-100 p-4 text-base-content">
+          <ul className="flex-cols menu mb-3 mt-4 flex w-80 gap-1  text-base-content">
             <li>
-              <Link>
+              <NavLink to="/dashboard/home">
                 <AiFillHome size={28} /> User Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link>
+              <NavLink to="/dashboard/myCart">
                 <AiOutlineShoppingCart size={28} /> My Cart
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link>
+              <NavLink to="/dashboard/paymentHistory">
                 <AiFillWallet size={28} /> Payment History
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link>
-                <AiFillCalendar size={28} /> Calender
-              </Link>
+              <NavLink to="/dashboard/reservations">
+                <AiFillCalendar size={28} /> Reservations
+              </NavLink>
             </li>
             <div className="divider"></div>
             <li>
-              <Link to="/">
+              <NavLink to="/">
                 <AiFillHome size={28} /> Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/menu">
+              <NavLink to="/menu">
                 <AiOutlineMenu size={28} /> Menu
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link>
+              <NavLink to="/dashboard/contact">
                 <AiFillContacts size={28} /> Contact
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
