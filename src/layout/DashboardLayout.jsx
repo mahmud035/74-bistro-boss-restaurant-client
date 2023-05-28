@@ -7,13 +7,17 @@ import {
   AiOutlineMenu,
   AiFillContacts,
 } from 'react-icons/ai';
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartProvider';
 
 const DashboardLayout = () => {
+  const { cart } = useContext(CartContext);
+
   return (
     <>
       <div className="drawer-mobile drawer ">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content px-6">
+        <div className="drawer-content flex items-center justify-center">
           <Outlet />
 
           <label
@@ -31,9 +35,12 @@ const DashboardLayout = () => {
                 <AiFillHome size={28} /> User Home
               </NavLink>
             </li>
-            <li>
+            <li className="relative">
               <NavLink to="/dashboard/myCart">
                 <AiOutlineShoppingCart size={28} /> My Cart
+                <span className="absolute right-44 top-0 rounded-full bg-purple-500 px-2.5  font-bold">
+                  {cart.length}
+                </span>
               </NavLink>
             </li>
             <li>
