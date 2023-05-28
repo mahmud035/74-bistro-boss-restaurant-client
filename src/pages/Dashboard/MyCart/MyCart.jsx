@@ -17,9 +17,10 @@ const MyCart = () => {
       <Helmet>
         <title>Bistro Boss | My Cart</title>
       </Helmet>
-      <div>
+      <div className="flex justify-between">
         <h3 className="text-3xl">Total Items: {cart.length}</h3>
         <h3 className="text-3xl">Total Price: ${totalPrice.toFixed(2)}</h3>
+        <button className="btn-warning btn-sm btn capitalize">Pay</button>
       </div>
     </div>
   );
