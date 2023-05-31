@@ -33,7 +33,7 @@ const CartProvider = ({ children }) => {
     return <div>{error.message}</div>;
   }
 
-  console.log(cart);
+  // console.log(cart);
 
   const cartInfo = { cart, refetch };
 

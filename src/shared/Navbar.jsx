@@ -11,7 +11,7 @@ const Navbar = () => {
   const { cart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  console.log(cart);
+  // console.log(cart);
 
   const handleLogout = () => {
     logout().then(() => {
@@ -31,10 +31,7 @@ const Navbar = () => {
         <Link to="/order/salad">Order Food</Link>
       </li>
       <li>
-        <Link>Dashboard</Link>
-      </li>
-      <li>
-        <Link>Contact Us</Link>
+        <Link to="/dashboard/myCart">Dashboard</Link>
       </li>
     </>
   );

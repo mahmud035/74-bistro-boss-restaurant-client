@@ -1,13 +1,16 @@
 import { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { AuthContext } from '../../contexts/UserContext';
 import { Helmet } from 'react-helmet-async';
+import { useForm } from 'react-hook-form';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { saveUser } from '../../api/auth';
+import { AuthContext } from '../../contexts/UserContext';
 
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const {
     register,
@@ -31,15 +34,17 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         //* 3. update user profile
         updateUserProfile(name)
           .then(() => {
             Swal.fire({
               icon: 'success',
-              title: `Profile name updated`,
+              title: `Registration successful`,
             });
-            navigate('/');
+
+            //* 4. Save User Info to Database
+            saveUser(user);
+            navigate(from, { replace: true });
           })
           .catch((error) => {
             Swal.fire({
